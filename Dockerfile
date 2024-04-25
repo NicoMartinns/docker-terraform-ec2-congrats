@@ -26,4 +26,4 @@ RUN mkdir Downloads && \
     ./aws/install
 
 # Mantendo o container interativo
-CMD ["/bin/bash"]
+CMD ["/bin/bash"]   
