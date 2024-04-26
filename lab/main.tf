@@ -24,6 +24,13 @@ resource "aws_security_group" "permitir_acesso" {
        protocol         = "tcp"
        cidr_blocks      = ["0.0.0.0/0"]
     }
+
+    egress {
+      from_port         = 0
+      to_port           = 0
+      protocol          = "-1"
+      cidr_blocks       = ["0.0.0.0/0"]
+    }
 }
 
 resource "aws_instance" "instancia_aws" {
@@ -34,8 +41,9 @@ resource "aws_instance" "instancia_aws" {
   user_data = <<-EOF
                 #!/bin/bash
                 yum update -y
+                yum install -y httpd
                 systemctl start httpd
                 systemctl enable httpd
-                echo "<h1>Parabéns, você subiu sua instância EC2!</h1>">/var/www/html/index.html
+                echo "<h1>Parabéns, Nicolas Martins. Você subiu sua instância EC2!</h1>">/var/www/html/index.html
                 EOF
 }
