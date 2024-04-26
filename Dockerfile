@@ -25,5 +25,9 @@ RUN mkdir Downloads && \
     rm awscliv2.zip && \
     ./aws/install
 
+# Criando um volume entre host e container
+RUN mkdir Lab
+VOLUME /Lab
+
 # Mantendo o container interativo
 CMD ["/bin/bash"]   
